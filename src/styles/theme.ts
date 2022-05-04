@@ -6,7 +6,8 @@ export default {
     }
   },
   font: {
-    family: 'Source Sans Pro, sans-serif',
+    family:
+      "Nunito Sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
     weight: {
       regular: 400,
       semiBold: 600,
