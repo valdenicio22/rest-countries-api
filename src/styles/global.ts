@@ -1,4 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components'
+import media from 'styled-media-query'
 
 const GlobalStyles = createGlobalStyle`
   @font-face {
@@ -54,24 +55,21 @@ const GlobalStyles = createGlobalStyle`
       font-size: 62.5%; //10px - 1rem
     }
     body {
-      font-size: ${theme.font.sizes.large};
-      -webkit-font-smoothing: antialiased;
+      font-size: ${theme.font.sizes.small};
+      font-weight: ${theme.font.weight.regular};
+
+      ${media.between('small', 'large')`
+        font-size: ${theme.font.sizes.small};
+      `}
+      ${media.greaterThan('large')`
+        font-size: ${theme.font.sizes.medium};
+      `}
     }
     body,
     input,
     textarea,
     button {
       font-family: ${theme.font.family};
-      font-weight: ${theme.font.weight.regular};
-    }
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    strong {
-      font-weight: ${theme.font.weight.bold};
     }
   `}
 `
