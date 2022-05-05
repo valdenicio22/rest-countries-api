@@ -4,6 +4,7 @@ import Select from '../../components/Select'
 import { api } from '../../service/api'
 import { useEffect, useState } from 'react'
 import { Country } from 'types/types'
+import CountryCard from 'components/CountryCard'
 
 const Home = () => {
   const [countries, setCountries] = useState<Country[]>([])
@@ -14,14 +15,17 @@ const Home = () => {
       .then((response) => setCountries(response.data))
   }, [])
 
-  console.log(countries)
-
   return (
     <S.Wrapper>
       <S.FiltersContainer>
         <TextField />
         <Select />
       </S.FiltersContainer>
+      <S.CountryCardList>
+        {countries.map((country) => (
+          <CountryCard key={country.cca3} country={country} />
+        ))}
+      </S.CountryCardList>
     </S.Wrapper>
   )
 }
