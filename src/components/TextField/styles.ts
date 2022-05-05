@@ -36,7 +36,7 @@ export const Input = styled.input`
     color: ${theme.colors.white};
 
     &::placeholder {
-      opacity: 0.9;
+      color: ${theme.colors.DarkGray};
     }
   `}
 `
