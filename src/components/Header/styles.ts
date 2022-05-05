@@ -1,12 +1,16 @@
 import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.header`
-  width: 100%;
+  ${({ theme }) => css`
+    width: 100%;
+    background-color: ${theme.colors.darkBlue};
+  `}
 `
 export const HeaderContainer = styled.div`
   ${({ theme }) => css`
     width: ${theme.containers.mobile};
     margin: 0 auto;
+    height: 8rem;
 
     display: flex;
     align-items: center;
@@ -40,6 +44,7 @@ export const IconContainer = styled.div`
     width: 1.5rem;
     height: 1.5rem;
     color: ${theme.colors.white};
+    font-weight: ${theme.font.weight.bold};
 
     display: flex;
     align-items: center;
