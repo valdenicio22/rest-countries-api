@@ -27,10 +27,10 @@ export default {
     darkModeBg: '#202c37',
 
     white: '#FFFFFF',
+    DarkGray: '#858585',
 
     lightModeBg: '#fafafa',
-    lightModeText: '#111517',
-    lightModeDarkGray: '#858585'
+    lightModeText: '#111517'
   },
   containers: {
     mobile: '34.3rem', //375 - 32 = 343px
