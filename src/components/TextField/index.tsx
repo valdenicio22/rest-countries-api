@@ -1,12 +1,8 @@
 import * as S from './styles'
 import { Search as SearcIcon } from '@styled-icons/bootstrap'
 
-export type TextFieldProps = {
-  size?: 'small' | 'big'
-}
-
-const TextField = ({ size = 'small' }: TextFieldProps) => (
-  <S.Wrapper size={size}>
+const TextField = () => (
+  <S.Wrapper>
     <S.InputWrapper>
       <S.Icon>
         <SearcIcon />
