@@ -3,19 +3,20 @@ import styled, { css } from 'styled-components'
 export const Wrapper = styled.header`
   ${({ theme }) => css`
     width: 100%;
-    background-color: ${theme.colors.darkBlue};
-  `}
-`
-export const HeaderContainer = styled.div`
-  ${({ theme }) => css`
-    width: ${theme.containers.mobile};
-    margin: 0 auto;
     height: 8rem;
+    background-color: ${theme.colors.darkBlue};
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
-  `};
+  `}
+`
+export const HeaderContainer = styled.div`
+  width: 100%;
+  padding: 0 1.6rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `
 export const HeaderMsg = styled.p`
   ${({ theme }) => css`
