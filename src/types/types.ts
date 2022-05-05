@@ -10,6 +10,7 @@ export type Country = {
       }
     }
   }
+  cca3: string
   population: string
   region: string
   subregion: string

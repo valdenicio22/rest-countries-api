@@ -23,6 +23,19 @@ export const FiltersContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
-    padding: 4.8rem 6rem;
+    padding: 4.8rem 8rem;
+  `}
+`
+export const CountryCardList = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 26.4rem);
+  gap: 4rem;
+
+  padding: 0 5.5rem;
+
+  ${media.greaterThan('large')`
+    gap: 7.5rem;
+    padding: 0 7.94rem;
   `}
 `
