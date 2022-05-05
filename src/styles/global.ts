@@ -54,24 +54,14 @@ const GlobalStyles = createGlobalStyle`
       font-size: 62.5%; //10px - 1rem
     }
     body {
-      font-size: ${theme.font.sizes.large};
-      -webkit-font-smoothing: antialiased;
+      font-size: ${theme.font.sizes.small};
+      font-weight: ${theme.font.weight.regular};
     }
     body,
     input,
     textarea,
     button {
       font-family: ${theme.font.family};
-      font-weight: ${theme.font.weight.regular};
-    }
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    strong {
-      font-weight: ${theme.font.weight.bold};
     }
   `}
 `
