@@ -5,7 +5,7 @@ export type Country = {
   name: {
     common: string
     nativeName: {
-      por: {
+      [key: string]: {
         common: string
       }
     }
@@ -14,10 +14,11 @@ export type Country = {
   population: string
   region: string
   subregion: string
-  capital: string
-  languages: {
-    por: string
-  }
+  capital: Array<string>
+  languages: { [key: string]: string }
   tld: Array<string>
-  border: Array<string>
+  borders?: Array<string>
+  currencies: {
+    [key: string]: Record<string, string>
+  }
 }
