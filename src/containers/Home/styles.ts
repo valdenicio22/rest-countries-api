@@ -38,4 +38,8 @@ export const CountryCardList = styled.div`
     gap: 7.5rem;
     padding: 0 7.94rem;
   `}
+
+  a {
+    text-decoration: none;
+  }
 `
