@@ -2,25 +2,49 @@ import * as S from './styles'
 import TextField from '../../components/TextField'
 import Select from '../../components/Select'
 import { api } from '../../service/api'
-import { useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { Country } from 'types/types'
 import CountryCard from 'components/CountryCard'
 import Link from 'next/link'
+import { useDebounce } from '../../hooks/useDebounce'
 
 const Home = () => {
   const [countries, setCountries] = useState<Country[]>([])
+  const [inputSearch, setInputSearch] = useState('')
+  const [debounceData, setDebounceData] = useState('')
+  const [selectData, setSelectData] = useState('default')
+  const debouncedInputSearch = useDebounce(setDebounceData, 500)
 
   useEffect(() => {
+    let query
+    if (debounceData) {
+      setSelectData('default')
+      query = `/name/${debounceData}`
+    } else query = '/all'
+    api.get(query).then((response) => setCountries(response.data))
+  }, [debounceData])
+
+  useEffect(() => {
+    if (!selectData) return
     api
-      .get('https://restcountries.com/v3.1/all')
+      .get(`/region/${selectData}`)
       .then((response) => setCountries(response.data))
-  }, [])
+  }, [selectData])
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputSearch(e.target.value)
+    debouncedInputSearch(e.target.value)
+  }
+
+  const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelectData(e.target.value)
+  }
 
   return (
     <S.Wrapper>
       <S.FiltersContainer>
-        <TextField />
-        <Select />
+        <TextField value={inputSearch} onChange={handleInputChange} />
+        <Select onChange={handleSelectChange} selectData={selectData} />
       </S.FiltersContainer>
       <S.CountryCardList>
         {countries.map((country) => (

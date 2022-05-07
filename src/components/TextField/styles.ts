@@ -28,6 +28,7 @@ export const Icon = styled.div`
       color: ${theme.colors.white};
       font-weight: ${theme.font.weight.extraBold};
     }
+    cursor: pointer;
   `}
 `
 export const Input = styled.input`
