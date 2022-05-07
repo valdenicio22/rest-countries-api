@@ -3,6 +3,8 @@ import media from 'styled-media-query'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
+    width: 100%;
+    min-height: calc(100vh - 8rem);
     background-color: ${theme.colors.darkModeBg};
   `}
 `

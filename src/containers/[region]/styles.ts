@@ -3,6 +3,7 @@ import media from 'styled-media-query'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
+    height: calc(100vh - 8rem);
     background-color: ${theme.colors.darkModeBg};
   `}
 `
@@ -15,13 +16,16 @@ export const CountryDetailsContainer = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: auto;
 
-    ${media.greaterThan('medium')`
+    ${media.greaterThan('large')`
       max-width: ${theme.containers.desktop};
       width: 100%;
       margin: 0 auto;
-      padding: 8rem;
+      padding: 8rem 0;
+      gap: 0 12rem;
 
-      grid-template-columns: repeat(4, minmax(56rem, 57.4rem));
+      display: grid;
+      grid-template-columns: repeat(2, minmax(56rem, 57.4rem));
+      grid-template-rows: auto auto;
       grid-template-areas:
       'Btn Btn'
       'Img Details';
@@ -29,7 +33,7 @@ export const CountryDetailsContainer = styled.div`
   `}
 `
 
-export const Btn = styled.button`
+export const BackBtn = styled.button`
   ${({ theme }) => css`
     width: 10.4rem;
     height: 3.2rem;
@@ -66,15 +70,15 @@ export const Btn = styled.button`
 export const ImgContainer = styled.div`
   ${({ theme }) => css`
     width: 32rem;
-    height: 22.9rem;
+    max-height: 22.9rem;
 
     border-radius: ${theme.border.radius.medium};
     margin-bottom: 4rem;
 
     ${media.greaterThan('medium')`
         grid-area: Img;
+        max-height: 40.1rem;
         width: 56rem;
-        height: min(30rem, 40.1rem);
         margin: none;
     `}
 
@@ -101,26 +105,19 @@ export const CountryInfoContainer = styled.div`
 
     ${media.greaterThan('large')`
       grid-area: Details;
-      width: 57.4rem;
-      height: min(30rem, 32.3rem);
-      margin-left: 14rem;
     `}
   `}
 `
 
 export const CountryName = styled.h2`
   ${({ theme }) => css`
+    width: fit-content;
     font-size: ${theme.font.sizes.xlarge};
     font-weight: ${theme.font.weight.extraBold};
-    line-height: 3rem;
-    padding-bottom: 1.6rem;
 
     ${media.greaterThan('large')`
-      grid-area: Details;
-      width: 57.4rem;
-      height: min(30rem, 32.3rem);
-
       font-size: ${theme.font.sizes.xxxlarge};
+      margin-bottom: 2.3rem;
     `}
   `}
 `
@@ -156,6 +153,10 @@ export const CountryDetail = styled.li`
     font-weight: ${theme.font.weight.bold};
     line-height: 3rem;
 
+    max-width: 25rem;
+    max-height: 3rem;
+    overflow: hidden;
+
     ${media.greaterThan('large')`
       font-size: ${theme.font.sizes.medium};
 
@@ -175,22 +176,29 @@ export const CountryInfo = styled.span`
 export const CountryBordersContainer = styled.div`
   width: 100%;
   height: 100%;
-
-  margin-top: 3.2rem;
-
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   gap: 1rem;
+
+  padding-top: 3.2rem;
+
+  ${media.greaterThan('large')`
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    padding-top: 2rem;
+  `}
 `
 
 export const BordersLabel = styled.p`
   ${({ theme }) => css`
     font-weight: ${theme.font.weight.bold};
     font-size: ${theme.font.sizes.medium};
-
-    display: block;
   `}
 `
 export const BordersBtnContainer = styled.p`

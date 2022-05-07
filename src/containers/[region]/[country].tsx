@@ -23,13 +23,12 @@ const CountryDetails = ({ countryData }: CountryDetailsProps) => {
     currencies
   } = countryData
 
-  console.log({ countryData })
   return (
     <S.Wrapper>
       <S.CountryDetailsContainer>
-        <S.Btn onClick={() => Router.push('/')}>
+        <S.BackBtn onClick={() => Router.push('/')}>
           <ArrowLeft width={20} height={20} /> Back
-        </S.Btn>
+        </S.BackBtn>
 
         <S.ImgContainer>
           <img src={flags.svg} alt={name.common} />
