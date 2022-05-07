@@ -2,7 +2,7 @@ import * as S from './styles'
 import { Search as SearcIcon } from '@styled-icons/bootstrap'
 import { ChangeEventHandler } from 'react'
 
-type TextFieldProps = {
+export type TextFieldProps = {
   value: string
   onChange: ChangeEventHandler<HTMLInputElement>
 }

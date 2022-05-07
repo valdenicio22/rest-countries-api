@@ -40,8 +40,6 @@ const Home = () => {
     setSelectData(e.target.value)
   }
 
-  console.log({ selectData })
-
   return (
     <S.Wrapper>
       <S.FiltersContainer>

@@ -1,7 +1,7 @@
 import { ChangeEventHandler } from 'react'
 import * as S from './styles'
 
-type SelectProps = {
+export type SelectProps = {
   onChange: ChangeEventHandler<HTMLSelectElement>
   selectData: string
 }
