@@ -18,8 +18,9 @@ export default {
       small: '1.4rem',
       medium: '1.6rem',
       large: '1.8rem',
-      xlarge: '2rem',
-      xxlarge: '2.4rem' // 24 px
+      xlarge: '2.2rem',
+      xxlarge: '2.4rem',
+      xxxlarge: '3.2rem' // 32 px
     }
   },
   colors: {
@@ -34,6 +35,6 @@ export default {
   },
   containers: {
     mobile: '34.3rem', //375 - 32 = 343px
-    desktop: '132rem' // 1440 - 120 = 1320px
+    desktop: '128.1rem' // 1440 - 160 = 1280px
   }
 } as const

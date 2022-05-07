@@ -3,6 +3,8 @@ import media from 'styled-media-query'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
+    width: 100%;
+    min-height: calc(100vh - 8rem);
     background-color: ${theme.colors.darkModeBg};
   `}
 `
@@ -38,4 +40,8 @@ export const CountryCardList = styled.div`
     gap: 7.5rem;
     padding: 0 7.94rem;
   `}
+
+  a {
+    text-decoration: none;
+  }
 `

@@ -15,14 +15,8 @@ export const HeaderContainer = styled.div`
   width: 100%;
   padding: 0 1.6rem;
 
-  ${media.greaterThan('small')`
-    padding: 0 2.1rem;
-  `}
-  ${media.greaterThan('medium')`
-    padding: 0 3rem;
-  `}
   ${media.greaterThan('large')`
-    padding: 0 6rem;
+    padding: 0 8rem;
   `}
 
   display: flex;
