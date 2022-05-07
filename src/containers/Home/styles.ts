@@ -10,8 +10,7 @@ export const Wrapper = styled.div`
 `
 
 export const FiltersContainer = styled.div`
-  width: 100%;
-  padding: 2rem 1.6rem;
+  padding: 2.4rem 1.6rem;
 
   display: flex;
   align-items: flex-start;
@@ -20,28 +19,36 @@ export const FiltersContainer = styled.div`
 
   gap: 4rem;
 
-  ${media.greaterThan('small')`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    padding: 4.8rem 8rem;
+  ${media.greaterThan('large')`
+    ${({ theme }) => css`
+      width: ${theme.containers.desktop};
+      margin: 0 auto;
+
+      padding: 4.8rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+    `}
   `}
 `
 export const CountryCardList = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 26.4rem);
-  gap: 4rem;
+  ${({ theme }) => css`
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 26.4rem);
+    gap: 4rem;
 
-  padding: 0 5.5rem;
+    padding: 0 5.5rem;
+    ${media.greaterThan('large')`
+      gap: 7.5rem;
+      width: ${theme.containers.desktop};
+      margin: 0 auto;
+      padding: 0;
+    `}
 
-  ${media.greaterThan('large')`
-    gap: 7.5rem;
-    padding: 0 7.94rem;
+    a {
+      text-decoration: none;
+    }
   `}
-
-  a {
-    text-decoration: none;
-  }
 `
