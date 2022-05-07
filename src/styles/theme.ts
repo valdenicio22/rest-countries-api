@@ -35,6 +35,6 @@ export default {
   },
   containers: {
     mobile: '34.3rem', //375 - 32 = 343px
-    desktop: '128rem' // 1440 - 160 = 1280px
+    desktop: '128.1rem' // 1440 - 160 = 1280px
   }
 } as const
