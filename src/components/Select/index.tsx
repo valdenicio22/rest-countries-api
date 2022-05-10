@@ -9,7 +9,7 @@ export type SelectProps = {
 const Select = ({ onChange, selectData }: SelectProps) => (
   <S.Wrapper>
     <S.Select name="countries" id="countries" onChange={onChange}>
-      <S.Option value="" selected={selectData === 'default'}>
+      <S.Option value="default" selected={selectData === 'default'}>
         Filter by Region
       </S.Option>
       <S.Option value="Africa" selected={selectData === 'Africa'}>

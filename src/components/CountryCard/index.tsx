@@ -9,14 +9,11 @@ const CountryCard = ({ country }: CountryCardProps) => {
   return (
     <S.Wrapper>
       <S.ImgContainer>
-        <img
-          src={country.flags.svg}
-          alt={`flag of the ${country.name.common}`}
-        />
+        <img src={country.flags?.svg} alt={`flag of the ${country.name}`} />
       </S.ImgContainer>
       <S.CountryInfoContainer>
         <S.CountryDetail>
-          <S.CountryName>{country.name.common}</S.CountryName>
+          <S.CountryName>{country.name}</S.CountryName>
 
           <S.CountryDetail>
             Population: <S.CountryInfo>{country.population}</S.CountryInfo>
