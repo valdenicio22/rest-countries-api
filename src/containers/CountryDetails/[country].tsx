@@ -4,6 +4,11 @@ import { Country } from 'types/types'
 import * as S from './styles'
 import { ArrowLeft } from '@styled-icons/bootstrap'
 import Router from 'next/router'
+import Link from 'next/link'
+import {
+  getAlpha3CodeAndName,
+  updateCountryBorders
+} from 'utils/getBordersName'
 
 type CountryDetailsProps = {
   countryData: Country
@@ -96,11 +101,18 @@ const CountryDetails = ({ countryData }: CountryDetailsProps) => {
           {countryData?.borders && (
             <S.CountryBordersContainer>
               <S.BordersLabel>Border Countries: </S.BordersLabel>
-              <S.BordersBtnContainer>
-                {countryData.borders.map((country) => (
-                  <S.BordersBtn key={country}>{country}</S.BordersBtn>
-                ))}
-              </S.BordersBtnContainer>
+
+              {countryData.borders.map((borderCountry) => (
+                <Link
+                  href={`/${borderCountry}`}
+                  key={countryData.alpha3Code}
+                  passHref
+                >
+                  <S.BordersBtnContainer key={borderCountry}>
+                    <S.BordersBtn>{borderCountry}</S.BordersBtn>
+                  </S.BordersBtnContainer>
+                </Link>
+              ))}
             </S.CountryBordersContainer>
           )}
         </S.CountryInfoContainer>
@@ -113,6 +125,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const response = await axios.get<Array<Country>>(
     'https://restcountries.com/v2/all'
   )
+  console.log(getAlpha3CodeAndName(response.data))
   const paths = response.data.map((country) => {
     return {
       params: {
@@ -131,9 +144,10 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const response = await axios.get<Country[]>(
     `https://restcountries.com/v2/name/${ctx.params?.country}`
   )
+  const country = updateCountryBorders(response.data[0])
   return {
     props: {
-      countryData: response.data[0]
+      countryData: country
     }
   }
 }

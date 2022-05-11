@@ -2,7 +2,9 @@ import { Country } from 'types/types'
 
 export type MapAlpha3CodeAndName = Record<string, string>
 
-export const getAlpha3CodeAndName = (countriesData: Country[]): void => {
+export const getAlpha3CodeAndName = (
+  countriesData: Country[]
+): MapAlpha3CodeAndName => {
   if (!countriesData) return countriesData
   const mapAlpha3CodeAndName = countriesData.reduce((acc, country) => {
     if (!country.alpha3Code) return acc
@@ -13,7 +15,7 @@ export const getAlpha3CodeAndName = (countriesData: Country[]): void => {
         .replace(/[\u0300-\u036f]/g, '')
     }
   }, {} as MapAlpha3CodeAndName)
-  console.log(mapAlpha3CodeAndName)
+  return mapAlpha3CodeAndName
 }
 
 const countries = {

@@ -207,12 +207,13 @@ export const BordersLabel = styled.p`
     font-size: ${theme.font.sizes.medium};
   `}
 `
-export const BordersBtnContainer = styled.p`
+export const BordersBtnContainer = styled.a`
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-flow: row wrap;
   gap: 1rem;
+  text-decoration: none;
 `
 
 export const BordersBtn = styled.button`
