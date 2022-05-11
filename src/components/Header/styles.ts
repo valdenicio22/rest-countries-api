@@ -5,7 +5,7 @@ export const Wrapper = styled.header`
   ${({ theme }) => css`
     width: 100%;
     height: 8rem;
-    background-color: ${theme.colors.darkBlue};
+    background-color: ${theme.colors.elements};
 
     display: flex;
     align-items: center;
@@ -32,7 +32,7 @@ export const HeaderMsg = styled.p`
     ${media.greaterThan('medium')`
     font-size: ${theme.font.sizes.xxlarge};
     `}
-    color: ${theme.colors.white};
+    color: ${theme.colors.text};
   `}
 `
 export const ThemeButton = styled.button`
@@ -60,7 +60,7 @@ export const IconContainer = styled.div`
       height: 1.8rem;
     `}
 
-    color: ${theme.colors.white};
+    color: ${theme.colors.text};
     font-weight: ${theme.font.weight.bold};
 
     display: flex;
@@ -77,6 +77,12 @@ export const CurrentTheme = styled.p`
     ${media.greaterThan('medium')`
       font-size: ${theme.font.sizes.small};
     `}
-    color: ${theme.colors.white};
+    color: ${theme.colors.text};
+
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
   `}
 `

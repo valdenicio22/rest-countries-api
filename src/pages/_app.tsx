@@ -1,14 +1,20 @@
 import Header from 'components/Header'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
+import { useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 
 import GlobalStyles from 'styles/global'
-import theme from '../styles/theme'
+import { getCurrentTheme, darkMode, lightMode } from '../styles/theme'
+
+type CurrentTheme = 'dark' | 'light'
 
 function App({ Component, pageProps }: AppProps) {
+  const [currentTheme, setCurrentTheme] = useState<CurrentTheme>('dark')
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider
+      theme={getCurrentTheme(currentTheme === 'dark' ? darkMode : lightMode)}
+    >
       <Head>
         <title>rest-countries-api</title>
         <link rel="shortcut icon" href="/img/icon-512.png" />
@@ -18,7 +24,7 @@ function App({ Component, pageProps }: AppProps) {
         <meta name="description" content="Project from FrontendMentor " />
       </Head>
       <GlobalStyles />
-      <Header />
+      <Header currentTheme={currentTheme} setCurrentTheme={setCurrentTheme} />
       <Component {...pageProps} />
     </ThemeProvider>
   )

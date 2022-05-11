@@ -5,9 +5,14 @@ export const Wrapper = styled.div`
     width: 26.4rem;
 
     height: 33.6rem;
-    background-color: ${theme.colors.darkBlue};
+    background-color: ${theme.colors.elements};
 
-    border-radius: 0 0 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: ${theme.shadow.boxShadow};
+
+    &:hover {
+      transform: scale(1.08);
+    }
   `}
 `
 export const ImgContainer = styled.div`
@@ -24,7 +29,7 @@ export const CountryInfoContainer = styled.div`
   ${({ theme }) => css`
     width: 100%;
     height: 17.6rem;
-    color: ${theme.colors.white};
+    color: ${theme.colors.text};
 
     padding: 2.4rem 2.4rem 4.6rem;
   `}

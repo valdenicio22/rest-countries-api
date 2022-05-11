@@ -1,19 +1,29 @@
 import * as S from './styles'
 import { MoonFill as MoonFillIcon } from '@styled-icons/bootstrap'
 import { Moon as MoonIcon } from '@styled-icons/bootstrap'
-import { useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
-const Header = () => {
-  const [isDarkMode, setIsDarkMode] = useState(true)
+export type HeaderProps = {
+  currentTheme: 'dark' | 'light'
+  setCurrentTheme: Dispatch<SetStateAction<'dark' | 'light'>>
+}
+
+const Header = ({ setCurrentTheme, currentTheme }: HeaderProps) => {
   return (
     <S.Wrapper>
       <S.HeaderContainer>
         <S.HeaderMsg>Where in the world</S.HeaderMsg>
-        <S.ThemeButton onClick={() => setIsDarkMode((prev) => !prev)}>
+        <S.ThemeButton
+          onClick={() =>
+            setCurrentTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
+          }
+        >
           <S.IconContainer>
-            {isDarkMode ? <MoonFillIcon /> : <MoonIcon />}
+            {currentTheme === 'dark' ? <MoonFillIcon /> : <MoonIcon />}
           </S.IconContainer>
-          <S.CurrentTheme>Dark Mode</S.CurrentTheme>
+          <S.CurrentTheme>
+            {currentTheme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+          </S.CurrentTheme>
         </S.ThemeButton>
       </S.HeaderContainer>
     </S.Wrapper>
