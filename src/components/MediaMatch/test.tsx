@@ -1,5 +1,5 @@
 import MediaMatch from '.'
-import { renderWithThemeProvider } from '../../utils/renderWithThemeProvider'
+import { renderWithThemeProvider } from '../../Utils/renderWithThemeProvider'
 
 describe('<MediaMatch />', () => {
   it('should render the MediaMatch', () => {

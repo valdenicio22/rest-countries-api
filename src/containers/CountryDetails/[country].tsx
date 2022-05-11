@@ -8,7 +8,7 @@ import Link from 'next/link'
 import {
   getAlpha3CodeAndName,
   updateCountryBorders
-} from 'utils/getBordersName'
+} from 'Utils/getBordersName'
 
 type CountryDetailsProps = {
   countryData: Country
