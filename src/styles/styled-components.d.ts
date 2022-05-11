@@ -1,7 +1,7 @@
 import 'styled-components'
-import theme from './theme'
+import { getCurrentTheme, darkMode } from './theme'
 
-//inferência de tipos
+const theme = getCurrentTheme(darkMode)
 type Theme = typeof theme
 
 declare module 'styled-components' {

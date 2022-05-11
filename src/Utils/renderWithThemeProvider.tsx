@@ -1,6 +1,6 @@
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
-import theme from 'styles/theme'
+import { getCurrentTheme, darkMode } from 'styles/theme'
 
 type RenderWithThemeProvider = (
   ui: React.ReactElement,
@@ -12,7 +12,7 @@ export const renderWithThemeProvider: RenderWithThemeProvider = (
   renderOptions
 ) => {
   return render(
-    <ThemeProvider theme={theme}>{ui}</ThemeProvider>,
+    <ThemeProvider theme={getCurrentTheme(darkMode)}>{ui}</ThemeProvider>,
     renderOptions
   )
 }
