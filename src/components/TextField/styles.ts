@@ -25,7 +25,7 @@ export const Icon = styled.div`
         width: 1.8rem;
         height: 1.8rem;
       `}
-      color: ${theme.colors.white};
+      color: ${theme.colors.text};
       font-weight: ${theme.font.weight.extraBold};
     }
     cursor: pointer;
@@ -45,10 +45,10 @@ export const Input = styled.input`
       font-size: ${theme.font.sizes.small};
     `}
     line-height: 2rem;
-    color: ${theme.colors.white};
+    color: ${theme.colors.text};
 
     &::placeholder {
-      color: ${theme.colors.DarkGray};
+      color: ${theme.colors.gray};
     }
   `}
 `
@@ -64,6 +64,7 @@ export const Wrapper = styled.div`
     `}
 
     border-radius: ${theme.border.radius.medium};
-    background-color: ${theme.colors.darkBlue};
+    background-color: ${theme.colors.elements};
+    box-shadow: ${theme.shadow.boxShadow};
   `}
 `

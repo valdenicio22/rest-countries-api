@@ -128,7 +128,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  console.log('params:', ctx.params?.country)
   const response = await axios.get<Country[]>(
     `https://restcountries.com/v2/name/${ctx.params?.country}`
   )

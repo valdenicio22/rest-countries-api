@@ -10,13 +10,14 @@ export const Wrapper = styled.div`
       height: 5.6rem;
     `}
 
-    background-color: ${theme.colors.darkBlue};
+    background-color: ${theme.colors.elements};
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     border-radius: ${theme.border.radius.medium};
+    box-shadow: ${theme.shadow.boxShadow};
   `}
 `
 export const Select = styled.select`
@@ -24,11 +25,8 @@ export const Select = styled.select`
     font-size: ${theme.font.sizes.xsmall};
 
     ${media.greaterThan('medium')`
-      font-size: ${theme.font.sizes.small}
+      font-size: ${theme.font.sizes.small};
     `}
-
-    color: ${theme.colors.white};
-    background-color: ${theme.colors.darkBlue};
 
     padding-left: 2.5rem;
     padding-right: 4rem;
@@ -36,4 +34,7 @@ export const Select = styled.select`
     outline: none;
   `}
 `
-export const Option = styled.option``
+
+export const Option = styled.option`
+  border: 1px solid red;
+`

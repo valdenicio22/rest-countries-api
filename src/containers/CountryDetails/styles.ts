@@ -4,7 +4,7 @@ import media from 'styled-media-query'
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     height: calc(100vh - 8rem);
-    background-color: ${theme.colors.darkModeBg};
+    background-color: ${theme.colors.background};
   `}
 `
 export const CountryDetailsContainer = styled.div`
@@ -39,6 +39,7 @@ export const BackBtn = styled.button`
     height: 3.2rem;
     margin-bottom: 6.4rem;
     font-size: ${theme.font.sizes.small};
+    box-shadow: ${theme.shadow.boxShadow};
 
     ${media.greaterThan('medium')`
       grid-area: Btn;
@@ -48,8 +49,8 @@ export const BackBtn = styled.button`
       font-size: ${theme.font.sizes.medium};
     `}
 
-    background-color: ${theme.colors.darkBlue};
-    color: ${theme.colors.white};
+    background-color: ${theme.colors.elements};
+    color: ${theme.colors.text};
 
     border: none;
     border-radius: ${theme.border.radius.medium};
@@ -63,7 +64,7 @@ export const BackBtn = styled.button`
     transition: filter 0.2s;
 
     &:hover {
-      filter: brightness(0.8);
+      filter: brightness(0.9);
     }
   `}
 `
@@ -87,6 +88,11 @@ export const ImgContainer = styled.div`
       height: 100%;
       object-fit: fill;
       border-radius: ${theme.border.radius.medium};
+      box-shadow: ${theme.shadow.boxShadow};
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   `}
 `
@@ -101,7 +107,7 @@ export const CountryInfoContainer = styled.div`
     align-items: flex-start;
     flex-direction: column;
 
-    color: ${theme.colors.white};
+    color: ${theme.colors.text};
 
     ${media.greaterThan('large')`
       grid-area: Details;
@@ -215,8 +221,8 @@ export const BordersBtn = styled.button`
     height: 3.2rem;
     text-align: center;
 
-    background-color: ${theme.colors.darkBlue};
-    color: ${theme.colors.white};
+    background-color: ${theme.colors.elements};
+    color: ${theme.colors.text};
 
     font-size: ${theme.font.sizes.medium};
 
@@ -227,6 +233,8 @@ export const BordersBtn = styled.button`
 
     &:hover {
       filter: brightness(0.9);
+      transform: scale(1.05);
     }
+    box-shadow: ${theme.shadow.boxShadow};
   `}
 `
