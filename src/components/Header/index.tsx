@@ -3,7 +3,7 @@ import { MoonFill as MoonFillIcon } from '@styled-icons/bootstrap'
 import { Moon as MoonIcon } from '@styled-icons/bootstrap'
 import { Dispatch, SetStateAction } from 'react'
 
-type HeaderProps = {
+export type HeaderProps = {
   currentTheme: 'dark' | 'light'
   setCurrentTheme: Dispatch<SetStateAction<'dark' | 'light'>>
 }
