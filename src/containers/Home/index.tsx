@@ -49,8 +49,6 @@ const Home = ({ countriesData }: HomeProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedRegion])
 
-  console.log({ selectedRegion })
-
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputSearch(e.target.value)
     debouncedInputSearch(e.target.value)
