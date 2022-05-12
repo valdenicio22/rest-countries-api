@@ -50,7 +50,7 @@ const regionModifiers = {
 }
 
 export const Region = styled.li<Props>`
-  ${({ toggle }) => css`
+  ${({ theme, toggle }) => css`
     width: 20rem;
     height: 4.8rem;
 
@@ -62,7 +62,7 @@ export const Region = styled.li<Props>`
 
     &:hover {
       filter: brightness(0.9);
-      background-color: #3f5161;
+      background-color: ${theme.colors.background};
     }
 
     ${media.greaterThan('medium')`
