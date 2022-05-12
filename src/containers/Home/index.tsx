@@ -18,13 +18,13 @@ const Home = ({ countriesData }: HomeProps) => {
   const [countries, setCountries] = useState<Country[]>(countriesData)
   const [inputSearch, setInputSearch] = useState('')
   const [debounceData, setDebounceData] = useState('')
-  const [selectedRegion, setSelectedRegion] = useState('')
+  const [selectedRegion, setSelectedRegion] = useState('Filter by Region')
   const debouncedInputSearch = useDebounce(setDebounceData, 500)
 
   useEffect(() => {
     let query
     if (debounceData) {
-      setSelectedRegion('')
+      setSelectedRegion('Filter by Region')
       query = `/name/${debounceData}`
     } else {
       setCountries(countriesData)
@@ -35,7 +35,8 @@ const Home = ({ countriesData }: HomeProps) => {
 
   useEffect(() => {
     if (!selectedRegion) return
-    if (selectedRegion === 'default') {
+    if (!!selectedRegion && inputSearch.length > 0) return
+    if (selectedRegion === 'Filter by Region') {
       setCountries(countriesData)
       return
     }
@@ -59,7 +60,10 @@ const Home = ({ countriesData }: HomeProps) => {
     <S.Wrapper>
       <S.FiltersContainer>
         <TextField value={inputSearch} onChange={handleInputChange} />
-        <RegionList setSelectedRegion={setSelectedRegion} />
+        <RegionList
+          setSelectedRegion={setSelectedRegion}
+          selectedRegion={selectedRegion}
+        />
       </S.FiltersContainer>
       <S.CountryCardList>
         {!!countries &&
