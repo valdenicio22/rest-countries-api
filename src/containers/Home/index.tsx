@@ -35,7 +35,6 @@ const Home = ({ countriesData }: HomeProps) => {
 
   useEffect(() => {
     if (!selectedRegion) return
-    if (!!selectedRegion && inputSearch.length > 0) return
     if (selectedRegion === 'Filter by Region') {
       setCountries(countriesData)
       return

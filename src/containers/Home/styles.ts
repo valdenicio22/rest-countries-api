@@ -45,6 +45,7 @@ export const CountryCardList = styled.div`
       width: ${theme.containers.desktop};
       margin: 0 auto;
       padding: 0;
+      padding-bottom: 10rem;
     `}
 
     a {
