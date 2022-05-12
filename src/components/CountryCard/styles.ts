@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -10,9 +11,11 @@ export const Wrapper = styled.div`
     border-radius: 0.5rem;
     box-shadow: ${theme.shadow.boxShadow};
 
-    &:hover {
-      transform: scale(1.08);
-    }
+    ${media.greaterThan('large')`
+      &:hover {
+        transform: scale(1.08);
+      }
+    `}
   `}
 `
 export const ImgContainer = styled.div`
