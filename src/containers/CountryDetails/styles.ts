@@ -3,7 +3,7 @@ import media from 'styled-media-query'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
-    height: calc(100vh - 8rem);
+    min-height: calc(100vh - 8rem);
     background-color: ${theme.colors.background};
   `}
 `
@@ -107,7 +107,8 @@ export const CountryInfoContainer = styled.div`
 
     ${media.greaterThan('large')`
       grid-area: Details;
-    `}
+
+      `}
   `}
 `
 
@@ -176,8 +177,8 @@ export const CountryInfo = styled.span`
 `
 
 export const CountryBordersContainer = styled.div`
-  width: 100%;
-  height: 100%;
+  width: fit-content;
+  height: fit-content;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -187,8 +188,7 @@ export const CountryBordersContainer = styled.div`
   padding-top: 3.2rem;
 
   ${media.greaterThan('large')`
-    width: fit-content;
-    height: fit-content;
+
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -214,8 +214,9 @@ export const BordersBtnContainer = styled.a`
 
 export const BordersBtn = styled.button`
   ${({ theme }) => css`
-    width: 7.27rem;
-    height: 3.2rem;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.5rem 1rem;
     text-align: center;
 
     background-color: ${theme.colors.elements};

@@ -98,11 +98,12 @@ const CountryDetails = ({ countryData }: CountryDetailsProps) => {
               []
             )}
           </S.CountryDetailList>
-          {countryData?.borders && (
-            <S.CountryBordersContainer>
-              <S.BordersLabel>Border Countries: </S.BordersLabel>
+          <S.CountryBordersContainer>
+            <S.BordersLabel>Border Countries: </S.BordersLabel>
 
-              {countryData.borders.map((borderCountry) => (
+            {countryData.borders?.map((borderCountry) => {
+              if (borderCountry.includes('None')) return <p>{borderCountry}</p>
+              return (
                 <Link
                   href={`/${borderCountry}`}
                   key={countryData.alpha3Code}
@@ -112,9 +113,9 @@ const CountryDetails = ({ countryData }: CountryDetailsProps) => {
                     <S.BordersBtn>{borderCountry}</S.BordersBtn>
                   </S.BordersBtnContainer>
                 </Link>
-              ))}
-            </S.CountryBordersContainer>
-          )}
+              )
+            })}
+          </S.CountryBordersContainer>
         </S.CountryInfoContainer>
       </S.CountryDetailsContainer>
     </S.Wrapper>
