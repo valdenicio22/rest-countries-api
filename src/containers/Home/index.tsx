@@ -18,13 +18,13 @@ const Home = ({ countriesData }: HomeProps) => {
   const [countries, setCountries] = useState<Country[]>(countriesData)
   const [inputSearch, setInputSearch] = useState('')
   const [debounceData, setDebounceData] = useState('')
-  const [selectedRegion, setSelectedRegion] = useState('default')
+  const [selectedRegion, setSelectedRegion] = useState('')
   const debouncedInputSearch = useDebounce(setDebounceData, 500)
 
   useEffect(() => {
     let query
     if (debounceData) {
-      setSelectedRegion('default')
+      setSelectedRegion('')
       query = `/name/${debounceData}`
     } else {
       setCountries(countriesData)
@@ -34,20 +34,21 @@ const Home = ({ countriesData }: HomeProps) => {
   }, [debounceData, countriesData])
 
   useEffect(() => {
-    if (selectedRegion === 'default' && inputSearch.length === 0) {
+    if (!selectedRegion) return
+    if (selectedRegion === 'default') {
       setCountries(countriesData)
       return
     }
-    if (!selectedRegion || selectedRegion === 'default') return
 
     api
-      .get(`/region/${selectedRegion}`)
+      .get(`region/${selectedRegion}`)
       .then((response) => setCountries(response.data))
-
     setInputSearch('')
     setDebounceData('')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedRegion])
+
+  console.log({ selectedRegion })
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputSearch(e.target.value)

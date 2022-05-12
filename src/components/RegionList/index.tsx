@@ -37,11 +37,19 @@ const RegionList = ({ setSelectedRegion }: RegionListProps) => {
           Filter by Region
         </S.Region>
 
-        <S.Region toggle={toggle} onClick={() => handleRegionClick('Africa')}>
+        <S.Region
+          toggle={toggle}
+          value="Africa"
+          onClick={() => handleRegionClick('Africa')}
+        >
           Africa
         </S.Region>
-        <S.Region toggle={toggle} onClick={() => handleRegionClick('America')}>
-          America
+        <S.Region
+          toggle={toggle}
+          value="Americas"
+          onClick={() => handleRegionClick('Americas')}
+        >
+          Americas
         </S.Region>
         <S.Region
           toggle={toggle}
