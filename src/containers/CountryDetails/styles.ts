@@ -89,10 +89,6 @@ export const ImgContainer = styled.div`
       object-fit: fill;
       border-radius: ${theme.border.radius.medium};
       box-shadow: ${theme.shadow.boxShadow};
-
-      &:hover {
-        transform: scale(1.05);
-      }
     }
   `}
 `
