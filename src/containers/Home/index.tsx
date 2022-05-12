@@ -1,6 +1,5 @@
 import * as S from './styles'
 import TextField from '../../components/TextField'
-import Select from '../../components/Select'
 import { api } from '../../service/api'
 import { ChangeEvent, useEffect, useState } from 'react'
 import { Country } from 'types/types'
@@ -9,6 +8,7 @@ import Link from 'next/link'
 import { useDebounce } from '../../hooks/useDebounce'
 import { GetStaticProps } from 'next'
 import axios from 'axios'
+import RegionList from 'components/RegionList'
 
 type HomeProps = {
   countriesData: Array<Country>
@@ -18,13 +18,13 @@ const Home = ({ countriesData }: HomeProps) => {
   const [countries, setCountries] = useState<Country[]>(countriesData)
   const [inputSearch, setInputSearch] = useState('')
   const [debounceData, setDebounceData] = useState('')
-  const [selectData, setSelectData] = useState('default')
+  const [selectedRegion, setSelectedRegion] = useState('Filter by Region')
   const debouncedInputSearch = useDebounce(setDebounceData, 500)
 
   useEffect(() => {
     let query
     if (debounceData) {
-      setSelectData('default')
+      setSelectedRegion('Filter by Region')
       query = `/name/${debounceData}`
     } else {
       setCountries(countriesData)
@@ -34,32 +34,34 @@ const Home = ({ countriesData }: HomeProps) => {
   }, [debounceData, countriesData])
 
   useEffect(() => {
-    if (selectData === 'default' && !debounceData) {
+    if (!selectedRegion) return
+    if (!!selectedRegion && inputSearch.length > 0) return
+    if (selectedRegion === 'Filter by Region') {
       setCountries(countriesData)
       return
     }
-    if (!selectData || selectData === 'default') return
 
     api
-      .get(`/region/${selectData}`)
+      .get(`region/${selectedRegion}`)
       .then((response) => setCountries(response.data))
+    setInputSearch('')
+    setDebounceData('')
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectData])
+  }, [selectedRegion])
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputSearch(e.target.value)
     debouncedInputSearch(e.target.value)
   }
 
-  const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSelectData(e.target.value)
-  }
-
   return (
     <S.Wrapper>
       <S.FiltersContainer>
         <TextField value={inputSearch} onChange={handleInputChange} />
-        <Select onChange={handleSelectChange} selectData={selectData} />
+        <RegionList
+          setSelectedRegion={setSelectedRegion}
+          selectedRegion={selectedRegion}
+        />
       </S.FiltersContainer>
       <S.CountryCardList>
         {!!countries &&

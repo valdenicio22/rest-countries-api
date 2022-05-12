@@ -24,16 +24,11 @@
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
-    "@mui/material": "^5.6.3",
     "@styled-icons/bootstrap": "^10.34.0",
-    "@styled-icons/evil": "^10.34.0",
-    "@types/react-modal": "^3.13.1",
     "axios": "^0.27.2",
     "next": "12.1.5",
-    "nookies": "^2.5.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-modal": "^3.15.1",
     "styled-components": "5.3.3",
     "styled-media-query": "^2.1.2"
   },

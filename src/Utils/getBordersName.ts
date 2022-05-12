@@ -281,7 +281,6 @@ export const updateCountryBorders = (country: Country): Country => {
   const bordersName = country.borders.map((borderAlphaCode) => {
     return countries[borderAlphaCode] ? countries[borderAlphaCode] : ''
   })
-  console.log({ bordersName })
   return {
     ...country,
     borders: [...bordersName]
