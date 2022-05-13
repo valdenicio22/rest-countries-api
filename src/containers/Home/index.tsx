@@ -9,34 +9,44 @@ import { useDebounce } from '../../hooks/useDebounce'
 import { GetStaticProps } from 'next'
 import axios from 'axios'
 import RegionList from 'components/RegionList'
+import { useInView } from 'react-intersection-observer'
 
 type HomeProps = {
   countriesData: Array<Country>
 }
 
 const Home = ({ countriesData }: HomeProps) => {
-  const [countries, setCountries] = useState<Country[]>(countriesData)
+  const pagesStep = 8
+  const [countries, setCountries] = useState<Country[]>(
+    countriesData.slice(0, pagesStep)
+  )
   const [inputSearch, setInputSearch] = useState('')
   const [debounceData, setDebounceData] = useState('')
-  const [selectedRegion, setSelectedRegion] = useState('Filter by Region')
+  const [selectedRegion, setSelectedRegion] = useState('')
   const debouncedInputSearch = useDebounce(setDebounceData, 500)
+  const [myRef, inView] = useInView({
+    threshold: 1
+  })
+  const [currentPage, setCurrentPage] = useState(pagesStep)
 
   useEffect(() => {
-    let query
+    if (!debounceData) return
+    let query = ''
     if (debounceData) {
       setSelectedRegion('Filter by Region')
       query = `/name/${debounceData}`
     } else {
-      setCountries(countriesData)
+      setCountries(countriesData.slice(0, currentPage))
       return
     }
     api.get(query).then((response) => setCountries(response.data))
-  }, [debounceData, countriesData])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debounceData])
 
   useEffect(() => {
     if (!selectedRegion) return
     if (selectedRegion === 'Filter by Region') {
-      setCountries(countriesData)
+      setCountries(countriesData.slice(0, currentPage))
       return
     }
 
@@ -53,6 +63,15 @@ const Home = ({ countriesData }: HomeProps) => {
     debouncedInputSearch(e.target.value)
   }
 
+  useEffect(() => {
+    if (!inView) return
+
+    setCurrentPage((prev) => prev + pagesStep)
+    setCountries(countriesData.slice(0, currentPage + pagesStep))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView])
+
+  console.log(`Is load more element visible ? ${inView}`)
   return (
     <S.Wrapper>
       <S.FiltersContainer>
@@ -76,6 +95,7 @@ const Home = ({ countriesData }: HomeProps) => {
               </a>
             </Link>
           ))}
+        <div ref={myRef} id="loadMore" />
       </S.CountryCardList>
     </S.Wrapper>
   )
