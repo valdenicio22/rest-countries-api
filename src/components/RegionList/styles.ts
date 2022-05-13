@@ -6,10 +6,11 @@ type Props = {
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
-    width: 20rem;
+    width: 16rem;
     height: 4.8rem;
 
-    ${media.greaterThan('medium')`
+    ${media.greaterThan('large')`
+      width: 20rem;
       height: 5.6rem;
     `}
 
@@ -51,7 +52,7 @@ const regionModifiers = {
 
 export const Region = styled.li<Props>`
   ${({ theme, toggle }) => css`
-    width: 20rem;
+    width: 16rem;
     height: 4.8rem;
 
     text-align: center;
@@ -65,7 +66,8 @@ export const Region = styled.li<Props>`
       background-color: ${theme.colors.background};
     }
 
-    ${media.greaterThan('medium')`
+    ${media.greaterThan('large')`
+      width: 20rem;
       height: 5.6rem;
     `}
     padding: 0 2rem;
