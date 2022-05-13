@@ -150,6 +150,7 @@ export const CountryDetailList = styled.ul`
     }
   `}
 `
+
 export const CountryDetail = styled.li`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
@@ -160,12 +161,16 @@ export const CountryDetail = styled.li`
     max-height: 3rem;
     overflow: hidden;
 
+    &:nth-child(6) {
+      margin-top: 3.2rem;
+    }
+
     ${media.greaterThan('large')`
       font-size: ${theme.font.sizes.medium};
-
-      .extraInfo {
+      &:nth-child(6) {
         margin-top: 0;
       }
+
     `}
   `}
 `
@@ -177,22 +182,17 @@ export const CountryInfo = styled.span`
 `
 
 export const CountryBordersContainer = styled.div`
-  width: fit-content;
+  width: 100%;
   height: fit-content;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-flow: row wrap;
   gap: 1rem;
 
   padding-top: 3.2rem;
 
   ${media.greaterThan('large')`
-
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-flow: row wrap;
     padding-top: 2rem;
   `}
 `
@@ -246,6 +246,7 @@ export const Footer = styled.footer`
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    padding-bottom: 5rem;
 
     a {
       text-decoration: none;

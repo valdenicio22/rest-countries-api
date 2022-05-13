@@ -71,7 +71,6 @@ const Home = ({ countriesData }: HomeProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView])
 
-  console.log(`Is load more element visible ? ${inView}`)
   return (
     <S.Wrapper>
       <S.FiltersContainer>
@@ -88,7 +87,7 @@ const Home = ({ countriesData }: HomeProps) => {
               href={`/${country.name
                 .normalize('NFD')
                 .replace(/[\u0300-\u036f]/g, '')}`}
-              key={country.alpha3Code}
+              key={country.name}
             >
               <a>
                 <CountryCard country={country} />

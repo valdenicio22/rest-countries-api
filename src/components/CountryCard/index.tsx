@@ -12,18 +12,16 @@ const CountryCard = ({ country }: CountryCardProps) => {
         <img src={country.flags?.svg} alt={`flag of the ${country.name}`} />
       </S.ImgContainer>
       <S.CountryInfoContainer>
-        <S.CountryDetail>
-          <S.CountryName>{country.name}</S.CountryName>
+        <S.CountryName>{country.name}</S.CountryName>
 
-          <S.CountryDetail>
-            Population: <S.CountryInfo>{country.population}</S.CountryInfo>
-          </S.CountryDetail>
-          <S.CountryDetail>
-            Region: <S.CountryInfo>{country.region}</S.CountryInfo>
-          </S.CountryDetail>
-          <S.CountryDetail>
-            Capital: <S.CountryInfo>{country.capital}</S.CountryInfo>
-          </S.CountryDetail>
+        <S.CountryDetail>
+          Population: <S.CountryInfo>{country.population}</S.CountryInfo>
+        </S.CountryDetail>
+        <S.CountryDetail>
+          Region: <S.CountryInfo>{country.region}</S.CountryInfo>
+        </S.CountryDetail>
+        <S.CountryDetail>
+          Capital: <S.CountryInfo>{country.capital}</S.CountryInfo>
         </S.CountryDetail>
       </S.CountryInfoContainer>
     </S.Wrapper>

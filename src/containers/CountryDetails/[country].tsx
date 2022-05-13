@@ -18,6 +18,7 @@ type CountryDetailsProps = {
 }
 const CountryDetails = ({ countryData }: CountryDetailsProps) => {
   const { colors } = useContext(ThemeContext)
+
   return (
     <S.Wrapper>
       {!countryData && 'Loading...'}
@@ -68,7 +69,7 @@ const CountryDetails = ({ countryData }: CountryDetailsProps) => {
               </S.CountryDetail>
             )}
             {countryData?.topLevelDomain ? (
-              <S.CountryDetail className="extraInfo">
+              <S.CountryDetail>
                 Top Level Domain:{' '}
                 <S.CountryInfo>{countryData.topLevelDomain}</S.CountryInfo>
               </S.CountryDetail>
