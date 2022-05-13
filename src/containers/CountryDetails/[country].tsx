@@ -35,40 +35,40 @@ const CountryDetails = ({ countryData }: CountryDetailsProps) => {
         </S.ImgContainer>
 
         <S.CountryInfoContainer>
-          {countryData?.name && (
+          {!!countryData.name && (
             <S.CountryName>{countryData.name}</S.CountryName>
           )}
           <S.CountryDetailList>
-            {countryData?.nativeName && (
+            {!!countryData.nativeName && (
               <S.CountryDetail>
                 Native Name:{' '}
                 <S.CountryInfo>{countryData.nativeName}</S.CountryInfo>
               </S.CountryDetail>
             )}
-            {countryData?.population && (
+            {!!countryData.population && (
               <S.CountryDetail>
                 Population:{' '}
                 <S.CountryInfo>{countryData.population}</S.CountryInfo>
               </S.CountryDetail>
             )}
 
-            {countryData?.region && (
+            {!!countryData.region && (
               <S.CountryDetail>
                 Region: <S.CountryInfo>{countryData.region}</S.CountryInfo>
               </S.CountryDetail>
             )}
-            {countryData?.subregion && (
+            {!!countryData.subregion && (
               <S.CountryDetail>
-                Sub Region:
+                Sub Region:{' '}
                 <S.CountryInfo>{countryData.subregion}</S.CountryInfo>
               </S.CountryDetail>
             )}
-            {countryData?.capital && (
+            {!!countryData.capital && (
               <S.CountryDetail>
                 Capital: <S.CountryInfo>{countryData.capital}</S.CountryInfo>
               </S.CountryDetail>
             )}
-            {countryData?.topLevelDomain ? (
+            {countryData.topLevelDomain ? (
               <S.CountryDetail>
                 Top Level Domain:{' '}
                 <S.CountryInfo>{countryData.topLevelDomain}</S.CountryInfo>
@@ -77,7 +77,7 @@ const CountryDetails = ({ countryData }: CountryDetailsProps) => {
               []
             )}
 
-            {countryData?.currencies ? (
+            {countryData.currencies ? (
               <S.CountryDetail>
                 Currencies:{' '}
                 <S.CountryInfo>
@@ -87,7 +87,7 @@ const CountryDetails = ({ countryData }: CountryDetailsProps) => {
             ) : (
               []
             )}
-            {countryData?.languages ? (
+            {!!countryData.languages && (
               <S.CountryDetail>
                 languages:{' '}
                 <S.CountryInfo>
@@ -98,8 +98,6 @@ const CountryDetails = ({ countryData }: CountryDetailsProps) => {
                   })}
                 </S.CountryInfo>
               </S.CountryDetail>
-            ) : (
-              []
             )}
           </S.CountryDetailList>
           <S.CountryBordersContainer>

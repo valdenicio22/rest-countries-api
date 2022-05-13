@@ -117,10 +117,11 @@ export const CountryName = styled.h2`
     width: fit-content;
     font-size: ${theme.font.sizes.xlarge};
     font-weight: ${theme.font.weight.extraBold};
+    margin-bottom: 2.3rem;
 
     ${media.greaterThan('large')`
       font-size: ${theme.font.sizes.xxxlarge};
-      margin-bottom: 2.3rem;
+      
     `}
   `}
 `
