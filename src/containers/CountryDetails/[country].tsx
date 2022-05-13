@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import axios from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { Country } from 'types/types'
@@ -9,12 +10,14 @@ import {
   getAlpha3CodeAndName,
   updateCountryBorders
 } from 'Utils/getBordersName'
+import { Github, Linkedin, PersonCircle } from '@styled-icons/bootstrap'
+import { ThemeContext } from 'styled-components'
 
 type CountryDetailsProps = {
   countryData: Country
 }
-
 const CountryDetails = ({ countryData }: CountryDetailsProps) => {
+  const { colors } = useContext(ThemeContext)
   return (
     <S.Wrapper>
       {!countryData && 'Loading...'}
@@ -118,6 +121,17 @@ const CountryDetails = ({ countryData }: CountryDetailsProps) => {
           </S.CountryBordersContainer>
         </S.CountryInfoContainer>
       </S.CountryDetailsContainer>
+      <S.Footer>
+        <Link href={'https://github.com/valdenicio22'} passHref>
+          <Github width={25} height={25} color={colors.text} />
+        </Link>
+        <Link href={'https://www.linkedin.com/in/valdenicioferreira/'} passHref>
+          <Linkedin width={25} height={25} color={colors.text} />
+        </Link>
+        <Link href={'https://valdenicio22.vercel.app/'} passHref>
+          <PersonCircle width={25} height={25} color={colors.text} />
+        </Link>
+      </S.Footer>
     </S.Wrapper>
   )
 }

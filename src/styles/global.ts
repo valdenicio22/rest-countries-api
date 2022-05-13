@@ -53,6 +53,7 @@ const GlobalStyles = createGlobalStyle`
   ${({ theme }) => css`
     html {
       font-size: 62.5%; //10px - 1rem
+      scroll-behavior: smooth;
     }
     body {
       font-size: ${theme.font.sizes.small};
