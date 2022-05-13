@@ -34,16 +34,16 @@ export const CountryInfoContainer = styled.div`
     height: 17.6rem;
     color: ${theme.colors.text};
 
-    padding: 2.4rem 2.4rem 4.6rem;
+    padding: 1.5rem 2.4rem 3.6rem;
   `}
 `
 export const CountryName = styled.p`
   ${({ theme }) => css`
+    text-overflow: ellipsis;
     font-size: ${theme.font.sizes.large};
     font-weight: ${theme.font.weight.extraBold};
-    line-height: 2.6rem;
 
-    padding-bottom: 1.6rem;
+    padding-bottom: 1.4rem;
   `}
 `
 export const CountryDetail = styled.p`
