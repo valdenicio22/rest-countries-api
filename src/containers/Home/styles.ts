@@ -32,6 +32,13 @@ export const FiltersContainer = styled.div`
     `}
   `}
 `
+
+export const Filters = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+`
+
 export const CountryCardList = styled.div`
   ${({ theme }) => css`
     width: 100%;
