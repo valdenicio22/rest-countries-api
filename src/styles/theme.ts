@@ -1,18 +1,33 @@
 type CurrentTheme = {
-  text: string
-  background: string
-  elements: string
+  colors: {
+    text: string
+    background: string
+    elements: string
+  }
+  shadow: {
+    boxShadow: string
+  }
 }
 
 export const darkMode = {
-  text: '#FFFFFF',
-  background: 'hsl(207, 26%, 17%)',
-  elements: 'hsl(209, 23%, 22%)'
+  colors: {
+    text: '#FFFFFF',
+    background: 'hsl(207, 26%, 17%)',
+    elements: 'hsl(209, 23%, 22%)'
+  },
+  shadow: {
+    boxShadow: '0rem 0rem 0.5rem rgba(0, 0, 0, 0.3)'
+  }
 }
 export const lightMode = {
-  text: 'hsl(200, 15%, 8%)',
-  background: '#f2f2f2',
-  elements: '#FFFFFF'
+  colors: {
+    text: 'hsl(200, 15%, 8%)',
+    background: '#f2f2f2',
+    elements: '#FFFFFF'
+  },
+  shadow: {
+    boxShadow: '0rem 0rem 0.7rem rgba(0, 0, 0, 0.3)'
+  }
 }
 
 export const getCurrentTheme = (currentTheme: CurrentTheme) => {
@@ -42,13 +57,13 @@ export const getCurrentTheme = (currentTheme: CurrentTheme) => {
       }
     },
     colors: {
-      background: currentTheme.background,
-      elements: currentTheme.elements,
-      text: currentTheme.text,
+      background: currentTheme.colors.background,
+      elements: currentTheme.colors.elements,
+      text: currentTheme.colors.text,
       gray: 'hsl(0, 0%, 52%)'
     },
     shadow: {
-      boxShadow: '0rem 0rem 1rem rgba(0, 0, 0, 0.3)'
+      boxShadow: currentTheme.shadow.boxShadow
     },
     containers: {
       mobile: '34.3rem', //375 - 32 = 343px
