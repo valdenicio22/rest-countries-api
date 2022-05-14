@@ -70,8 +70,9 @@ export const Footer = styled.footer`
     display: flex;
     align-items: center;
     justify-content: center;
+
     gap: 2rem;
-    padding-bottom: 5rem;
+    padding: 2rem 0 4rem;
 
     a {
       text-decoration: none;
