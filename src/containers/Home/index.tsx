@@ -1,7 +1,7 @@
 import * as S from './styles'
 import TextField from '../../components/TextField'
 import { api } from '../../service/api'
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { Country } from 'types/types'
 import CountryCard from 'components/CountryCard'
 import Link from 'next/link'
@@ -11,12 +11,15 @@ import axios from 'axios'
 import RegionList from 'components/RegionList'
 import { useInView } from 'react-intersection-observer'
 import SortList from 'components/SortList'
+import { Github, Linkedin, PersonCircle } from '@styled-icons/bootstrap'
+import { ThemeContext } from 'styled-components'
 
 type HomeProps = {
   countriesData: Array<Country>
 }
 
 const Home = ({ countriesData }: HomeProps) => {
+  const { colors } = useContext(ThemeContext)
   const pagesStep = 8
   const [countries, setCountries] = useState<Country[]>(
     countriesData.slice(0, pagesStep)
@@ -28,7 +31,7 @@ const Home = ({ countriesData }: HomeProps) => {
   const [selectedSort, setSelectedSort] = useState('')
   const debouncedInputSearch = useDebounce(setDebounceData, 500)
   const [myRef, inView] = useInView({
-    threshold: 1
+    threshold: 0.7
   })
   const [currentPage, setCurrentPage] = useState(pagesStep)
 
@@ -113,8 +116,18 @@ const Home = ({ countriesData }: HomeProps) => {
               </a>
             </Link>
           ))}
-        <div ref={myRef} id="loadMore" />
       </S.CountryCardList>
+      <S.Footer ref={myRef} id="loadMore">
+        <Link href={'https://github.com/valdenicio22'} passHref>
+          <Github width={25} height={25} color={colors.text} />
+        </Link>
+        <Link href={'https://www.linkedin.com/in/valdenicioferreira/'} passHref>
+          <Linkedin width={25} height={25} color={colors.text} />
+        </Link>
+        <Link href={'https://valdenicio22.vercel.app/'} passHref>
+          <PersonCircle width={25} height={25} color={colors.text} />
+        </Link>
+      </S.Footer>
     </S.Wrapper>
   )
 }

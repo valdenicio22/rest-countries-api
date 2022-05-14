@@ -156,7 +156,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     return {
       props: {}
     }
-  console.log(ctx.params!.country)
   const response = await axios.get<Country[]>(
     `https://restcountries.com/v2/name/${ctx.params!.country}`
   )

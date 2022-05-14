@@ -60,3 +60,30 @@ export const CountryCardList = styled.div`
     }
   `}
 `
+
+export const Footer = styled.footer`
+  ${({ theme }) => css`
+    width: 100%;
+
+    height: fit-content;
+    background-color: ${theme.colors.background};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding-bottom: 5rem;
+
+    a {
+      text-decoration: none;
+    }
+    > svg {
+      cursor: pointer;
+
+      transition: filter 0.2s;
+
+      &:hover {
+        filter: brightness(0.8);
+      }
+    }
+  `}
+`
