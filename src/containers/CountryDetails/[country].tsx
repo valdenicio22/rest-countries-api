@@ -27,16 +27,16 @@ const CountryDetails = ({ countryData }: CountryDetailsProps) => {
         <S.ImgContainer>
           <img
             src={countryData?.flags ? countryData.flags.svg : ''}
-            alt={countryData?.name ? countryData.name : ''}
+            alt={countryData.name ? countryData.name : ''}
           />
         </S.ImgContainer>
 
         <S.CountryInfoContainer>
-          {!!countryData.name && (
+          {countryData.name && (
             <S.CountryName>{countryData.name}</S.CountryName>
           )}
           <S.CountryDetailList>
-            {!!countryData.nativeName && (
+            {countryData.nativeName && (
               <S.CountryDetail>
                 Native Name:{' '}
                 <S.CountryInfo>{countryData.nativeName}</S.CountryInfo>
@@ -49,7 +49,7 @@ const CountryDetails = ({ countryData }: CountryDetailsProps) => {
               </S.CountryDetail>
             )}
 
-            {!!countryData.region && (
+            {countryData.region && (
               <S.CountryDetail>
                 Region: <S.CountryInfo>{countryData.region}</S.CountryInfo>
               </S.CountryDetail>
@@ -147,7 +147,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true
+    fallback: false
   }
 }
 
@@ -156,8 +156,9 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     return {
       props: {}
     }
+  console.log(ctx.params!.country)
   const response = await axios.get<Country[]>(
-    `https://restcountries.com/v2/name/${ctx.params.country}`
+    `https://restcountries.com/v2/name/${ctx.params!.country}`
   )
   const country = updateCountryBorders(response.data[0])
   return {
