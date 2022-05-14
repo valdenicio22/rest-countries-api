@@ -45,7 +45,6 @@ const SortList = ({
     switch (field) {
       case 'area':
       case 'population':
-        console.log('field', field)
         sortedCountries = sortedCountries
           .filter((country) => !!country[field] && country)
           .sort((a, b) => descOrdering(a, b, field))

@@ -6,10 +6,7 @@ import * as S from './styles'
 import { ArrowLeft } from '@styled-icons/bootstrap'
 import Router from 'next/router'
 import Link from 'next/link'
-import {
-  getAlpha3CodeAndName,
-  updateCountryBorders
-} from 'Utils/getBordersName'
+import { updateCountryBorders } from 'Utils/getBordersName'
 import { Github, Linkedin, PersonCircle } from '@styled-icons/bootstrap'
 import { ThemeContext } from 'styled-components'
 
@@ -139,7 +136,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const response = await axios.get<Array<Country>>(
     'https://restcountries.com/v2/all'
   )
-  console.log(getAlpha3CodeAndName(response.data))
+  // getAlpha3CodeAndName(response.data)
   const paths = response.data.map((country) => {
     return {
       params: {
@@ -155,8 +152,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
+  if (!ctx.params)
+    return {
+      props: {}
+    }
   const response = await axios.get<Country[]>(
-    `https://restcountries.com/v2/name/${ctx.params?.country}`
+    `https://restcountries.com/v2/name/${ctx.params.country}`
   )
   const country = updateCountryBorders(response.data[0])
   return {

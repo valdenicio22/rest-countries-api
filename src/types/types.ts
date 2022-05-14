@@ -1,10 +1,7 @@
 export type Country = {
-  flags?: {
-    svg: string
-  }
+  flags?: { svg: string }
   name: string
   nativeName?: string
-
   alpha3Code?: string
   population?: number
   region?: string

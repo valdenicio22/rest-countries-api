@@ -47,7 +47,6 @@ const Home = ({ countriesData }: HomeProps) => {
   }, [debounceData])
 
   useEffect(() => {
-    console.log('selected sort useEffect')
     if (!selectedSort) return
     setInputSearch('')
     setDebounceData('')
@@ -55,7 +54,6 @@ const Home = ({ countriesData }: HomeProps) => {
   }, [selectedSort])
 
   useEffect(() => {
-    console.log('selected Region useEffect')
     if (!selectedRegion) return
     if (selectedRegion === 'Filter by Region') {
       setCountries(countriesData.slice(0, currentPage))
@@ -84,12 +82,6 @@ const Home = ({ countriesData }: HomeProps) => {
     setInputSearch(e.target.value)
     debouncedInputSearch(e.target.value)
   }
-
-  console.log({ debounceData })
-  console.log({ selectedRegion })
-  console.log({ selectedSort })
-  console.log({ countries })
-
   return (
     <S.Wrapper>
       <S.FiltersContainer>
