@@ -3,7 +3,7 @@ import media from 'styled-media-query'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
-    height: calc(100vh - 8rem);
+    min-height: calc(100vh - 8rem);
     background-color: ${theme.colors.background};
   `}
 `
@@ -89,10 +89,6 @@ export const ImgContainer = styled.div`
       object-fit: fill;
       border-radius: ${theme.border.radius.medium};
       box-shadow: ${theme.shadow.boxShadow};
-
-      &:hover {
-        transform: scale(1.05);
-      }
     }
   `}
 `
@@ -111,7 +107,8 @@ export const CountryInfoContainer = styled.div`
 
     ${media.greaterThan('large')`
       grid-area: Details;
-    `}
+
+      `}
   `}
 `
 
@@ -120,10 +117,11 @@ export const CountryName = styled.h2`
     width: fit-content;
     font-size: ${theme.font.sizes.xlarge};
     font-weight: ${theme.font.weight.extraBold};
+    margin-bottom: 2.3rem;
 
     ${media.greaterThan('large')`
       font-size: ${theme.font.sizes.xxxlarge};
-      margin-bottom: 2.3rem;
+      
     `}
   `}
 `
@@ -153,6 +151,7 @@ export const CountryDetailList = styled.ul`
     }
   `}
 `
+
 export const CountryDetail = styled.li`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
@@ -163,12 +162,16 @@ export const CountryDetail = styled.li`
     max-height: 3rem;
     overflow: hidden;
 
+    &:nth-child(6) {
+      margin-top: 3.2rem;
+    }
+
     ${media.greaterThan('large')`
       font-size: ${theme.font.sizes.medium};
-
-      .extraInfo {
+      &:nth-child(6) {
         margin-top: 0;
       }
+
     `}
   `}
 `
@@ -181,22 +184,16 @@ export const CountryInfo = styled.span`
 
 export const CountryBordersContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: fit-content;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-flow: row wrap;
   gap: 1rem;
 
   padding-top: 3.2rem;
 
   ${media.greaterThan('large')`
-    width: fit-content;
-    height: fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-flow: row wrap;
     padding-top: 2rem;
   `}
 `
@@ -218,8 +215,9 @@ export const BordersBtnContainer = styled.a`
 
 export const BordersBtn = styled.button`
   ${({ theme }) => css`
-    width: 7.27rem;
-    height: 3.2rem;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.5rem 1rem;
     text-align: center;
 
     background-color: ${theme.colors.elements};
@@ -237,5 +235,31 @@ export const BordersBtn = styled.button`
       transform: scale(1.05);
     }
     box-shadow: ${theme.shadow.boxShadow};
+  `}
+`
+
+export const Footer = styled.footer`
+  ${({ theme }) => css`
+    width: 100%;
+    height: fit-content;
+    background-color: ${theme.colors.background};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding-bottom: 5rem;
+
+    a {
+      text-decoration: none;
+    }
+    > svg {
+      cursor: pointer;
+
+      transition: filter 0.2s;
+
+      &:hover {
+        filter: brightness(0.8);
+      }
+    }
   `}
 `

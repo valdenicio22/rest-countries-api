@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
     position: relative;
   `}
 `
-export const RegionList = styled.ul`
+export const SortList = styled.ul`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.xsmall};
     list-style: none;
@@ -37,7 +37,7 @@ export const RegionList = styled.ul`
   `}
 `
 
-const regionModifiers = {
+const sortItemModifiers = {
   remove: () => css`
     display: none;
 
@@ -50,7 +50,7 @@ const regionModifiers = {
   `
 }
 
-export const Region = styled.li<Props>`
+export const SortItem = styled.li<Props>`
   ${({ theme, toggle }) => css`
     width: 16rem;
     height: 4.8rem;
@@ -78,6 +78,6 @@ export const Region = styled.li<Props>`
       justify-content: space-between;
     }
 
-    ${toggle && regionModifiers.remove()}
+    ${toggle && sortItemModifiers.remove()}
   `}
 `

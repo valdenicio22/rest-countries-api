@@ -24,12 +24,12 @@ const RegionList = ({ setSelectedRegion, selectedRegion }: RegionListProps) => {
     <S.Wrapper>
       <S.RegionList>
         <S.Region toggle={toggle} onClick={handleDisplayOptions}>
-          {selectedRegion}
+          {selectedRegion ? selectedRegion : 'Filter by Region'}
           <span>
             <ChevronCompactDown width={20} height={20} />
           </span>
         </S.Region>
-        {selectedRegion !== 'Filter by Region' && (
+        {selectedRegion !== 'Filter by Region' && selectedRegion !== '' && (
           <S.Region
             toggle={toggle}
             onClick={() => handleRegionClick('Filter by Region')}

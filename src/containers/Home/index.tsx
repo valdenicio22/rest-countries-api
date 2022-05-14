@@ -9,35 +9,54 @@ import { useDebounce } from '../../hooks/useDebounce'
 import { GetStaticProps } from 'next'
 import axios from 'axios'
 import RegionList from 'components/RegionList'
+import { useInView } from 'react-intersection-observer'
+import SortList from 'components/SortList'
 
 type HomeProps = {
   countriesData: Array<Country>
 }
 
 const Home = ({ countriesData }: HomeProps) => {
-  const [countries, setCountries] = useState<Country[]>(countriesData)
+  const pagesStep = 8
+  const [countries, setCountries] = useState<Country[]>(
+    countriesData.slice(0, pagesStep)
+  )
   const [inputSearch, setInputSearch] = useState('')
   const [debounceData, setDebounceData] = useState('')
-  const [selectedRegion, setSelectedRegion] = useState('Filter by Region')
+
+  const [selectedRegion, setSelectedRegion] = useState('')
+  const [selectedSort, setSelectedSort] = useState('')
   const debouncedInputSearch = useDebounce(setDebounceData, 500)
+  const [myRef, inView] = useInView({
+    threshold: 1
+  })
+  const [currentPage, setCurrentPage] = useState(pagesStep)
 
   useEffect(() => {
-    let query
-    if (debounceData) {
-      setSelectedRegion('Filter by Region')
-      query = `/name/${debounceData}`
-    } else {
-      setCountries(countriesData)
+    if (!debounceData && !selectedRegion && !selectedSort) {
+      setCountries(countriesData.slice(0, currentPage))
       return
     }
-    api.get(query).then((response) => setCountries(response.data))
-  }, [debounceData, countriesData])
+    if (!debounceData) return
+    setSelectedRegion('')
+    setSelectedSort('')
+    api
+      .get(`/name/${debounceData}`)
+      .then((response) => setCountries(response.data))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debounceData])
+
+  useEffect(() => {
+    if (!selectedSort) return
+    setInputSearch('')
+    setDebounceData('')
+    setSelectedRegion('')
+  }, [selectedSort])
 
   useEffect(() => {
     if (!selectedRegion) return
-    if (!!selectedRegion && inputSearch.length > 0) return
     if (selectedRegion === 'Filter by Region') {
-      setCountries(countriesData)
+      setCountries(countriesData.slice(0, currentPage))
       return
     }
 
@@ -46,22 +65,39 @@ const Home = ({ countriesData }: HomeProps) => {
       .then((response) => setCountries(response.data))
     setInputSearch('')
     setDebounceData('')
+    setSelectedSort('')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedRegion])
+
+  useEffect(() => {
+    if (!inView) return
+    if (debounceData || selectedRegion || selectedSort) return
+
+    setCurrentPage((prev) => prev + pagesStep)
+    setCountries(countriesData.slice(0, currentPage + pagesStep))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView])
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputSearch(e.target.value)
     debouncedInputSearch(e.target.value)
   }
-
   return (
     <S.Wrapper>
       <S.FiltersContainer>
         <TextField value={inputSearch} onChange={handleInputChange} />
-        <RegionList
-          setSelectedRegion={setSelectedRegion}
-          selectedRegion={selectedRegion}
-        />
+        <S.Filters>
+          <SortList
+            countriesData={countriesData}
+            setCountries={setCountries}
+            selectedSort={selectedSort}
+            setSelectedSort={setSelectedSort}
+          />
+          <RegionList
+            setSelectedRegion={setSelectedRegion}
+            selectedRegion={selectedRegion}
+          />
+        </S.Filters>
       </S.FiltersContainer>
       <S.CountryCardList>
         {!!countries &&
@@ -70,13 +106,14 @@ const Home = ({ countriesData }: HomeProps) => {
               href={`/${country.name
                 .normalize('NFD')
                 .replace(/[\u0300-\u036f]/g, '')}`}
-              key={country.alpha3Code}
+              key={country.name}
             >
               <a>
                 <CountryCard country={country} />
               </a>
             </Link>
           ))}
+        <div ref={myRef} id="loadMore" />
       </S.CountryCardList>
     </S.Wrapper>
   )

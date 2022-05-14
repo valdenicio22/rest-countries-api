@@ -1,5 +1,5 @@
 import * as S from './styles'
-import { Search as SearcIcon } from '@styled-icons/bootstrap'
+import { Search as SearchIcon } from '@styled-icons/bootstrap'
 import { ChangeEventHandler } from 'react'
 
 export type TextFieldProps = {
@@ -11,7 +11,7 @@ const TextField = ({ value, onChange }: TextFieldProps) => (
   <S.Wrapper>
     <S.InputWrapper>
       <S.Icon>
-        <SearcIcon />
+        <SearchIcon />
       </S.Icon>
       <S.Input
         type="text"

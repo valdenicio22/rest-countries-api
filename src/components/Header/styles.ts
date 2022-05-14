@@ -23,7 +23,7 @@ export const HeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 `
-export const HeaderMsg = styled.p`
+export const HeaderMsg = styled.h1`
   ${({ theme }) => css`
     line-height: 20px;
     font-weight: ${theme.font.weight.extraBold};
@@ -33,6 +33,8 @@ export const HeaderMsg = styled.p`
     font-size: ${theme.font.sizes.xxlarge};
     `}
     color: ${theme.colors.text};
+
+    cursor: pointer;
   `}
 `
 export const ThemeButton = styled.button`
