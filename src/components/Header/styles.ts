@@ -6,18 +6,20 @@ export const Wrapper = styled.header`
     width: 100%;
     height: 8rem;
     background-color: ${theme.colors.elements};
+    padding: 0 1.6rem;
+
+    ${media.greaterThan('large')`
+      padding: 0 8rem;
+    `}
 
     display: flex;
     align-items: center;
   `}
 `
 export const HeaderContainer = styled.div`
+  max-width: ${({ theme }) => theme.containers.desktop};
   width: 100%;
-  padding: 0 1.6rem;
-
-  ${media.greaterThan('large')`
-    padding: 0 8rem;
-  `}
+  margin: 0 auto;
 
   display: flex;
   align-items: center;
