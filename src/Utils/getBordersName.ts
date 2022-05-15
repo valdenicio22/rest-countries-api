@@ -272,12 +272,7 @@ const countries = {
 } as MapAlpha3CodeAndName
 
 export const updateCountryBorders = (country: Country): Country => {
-  if (!country.borders) {
-    return {
-      ...country,
-      borders: ['None - This country is probably on an island']
-    }
-  }
+  if (!country.borders) return country
   const bordersName = country.borders.map((borderAlphaCode) => {
     return countries[borderAlphaCode] ? countries[borderAlphaCode] : ''
   })
