@@ -17,12 +17,13 @@ export const FiltersContainer = styled.div`
   justify-content: center;
   flex-direction: column;
 
-  gap: 4rem;
+  gap: 2.4rem;
 
   ${media.greaterThan('large')`
     ${({ theme }) => css`
       width: ${theme.containers.desktop};
       margin: 0 auto;
+      gap: 4rem;
 
       padding: 4.8rem 0;
       display: flex;
